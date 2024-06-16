@@ -24,7 +24,7 @@ export const uploadRouter = {
   imageUploader: file({
     image: {
       maxFileSize: "2MB",
-      minFileCount: 2,
+      minFileCount: 1,
       maxFileCount: 10,
     },
   })

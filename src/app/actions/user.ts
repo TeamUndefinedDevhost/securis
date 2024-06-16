@@ -91,3 +91,12 @@ export const getSignature = async (
 
   return user.esignature;
 };
+
+export const getPDFs = async (
+  email: Prisma.UserFindUniqueArgs["where"]["email"]
+) => {
+  const user = await getUserByEmail(email, { select: { pdfs: true } });
+  if (!user) throw new Error("User not found");
+
+  return user.pdfs;
+};

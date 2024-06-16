@@ -1,7 +1,7 @@
 "use client";
 
 import DashboardLayout from "../_components/DashboardLayout";
-import { PaperclipIcon, Coins, Home, Package, Save, Search, Image as Im } from "lucide-react";
+import { PaperclipIcon, FileSignature, Coins, Home, Package, Save, Search, Image as Im, HomeIcon } from "lucide-react";
 import { USERROLE } from "@prisma/client";
 import Image from "next/image";
 import { Building } from "lucide-react";
@@ -10,15 +10,20 @@ import { useSession } from "next-auth/react";
 
 const sidebarItems: SidebarItem[] = [
   {
-    icon: <Im className="h-4 w-4" />,
+    icon: <HomeIcon className="h-4 w-4" />,
     title: "Signature Authentication",
-    href: "/company",
+    href: "/user",
   },
   {
     icon: <PaperclipIcon className="h-4 w-4" />,
     title: "Document Verification",
+    href: "/user/pdf",
+  },
+  {
+    icon: <FileSignature className="h-4 w-4" />,
+    title: "Physical Sign Verification",
     href: "/company/jobs",
-  }
+  },
 ];
 
 export default function UserLayout({
