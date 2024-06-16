@@ -12,13 +12,13 @@ const sidebarItems: SidebarItem[] = [
   {
     icon: <Home className="h-4 w-4" />,
     title: "Dashboard",
-    href: "/company",
+    href: "/manager",
   },
   {
     icon: <Briefcase className="h-4 w-4" />,
-    title: "Jobs",
-    href: "/company/jobs",
-  }
+    title: "Upload Document",
+    href: "/manager/upload",
+  },
 ];
 
 export default function CompanyLayout({
