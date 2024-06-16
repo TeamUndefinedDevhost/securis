@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma, USERROLE } from "@prisma/client";
 
 export const getUserById = async (
   id: Prisma.UserFindUniqueArgs["where"]["id"],
@@ -33,7 +33,7 @@ export const getUserByEmail = async (
   }
 
   return user;
-}
+};
 
 export const uploadImage = async (
   id: Prisma.UserUpdateArgs["where"]["id"],
@@ -51,11 +51,43 @@ export const uploadImage = async (
 };
 
 export const saveEsignature = async (
-  id: Prisma.UserUpdateArgs["where"]["id"],
-  esignature: string
+  email: Prisma.UserUpdateArgs["where"]["email"],
+  esignature: Prisma.UserUpdateArgs["data"]["esignature"]
 ) => {
   return await prisma.user.update({
-    where: { id },
+    where: { email },
     data: { esignature },
   });
+};
+
+export const savePDF = async (
+  email: Prisma.UserUpdateArgs["where"]["email"],
+  pdf: string
+) => {
+  const user = await getUserByEmail(email, { select: { pdfs: true } });
+  if (!user) throw new Error("User not found");
+
+  const updatedPdfs = [...(user.pdfs || []), pdf];
+
+  return await prisma.user.update({
+    where: { email },
+    data: { pdfs: updatedPdfs },
+  });
+};
+
+export const getAllUsers = async () => {
+  return await prisma.user.findMany({
+    where: {
+      role: USERROLE.USER,
+    },
+  });
+};
+
+export const getSignature = async (
+  email: Prisma.UserFindUniqueArgs["where"]["email"]
+) => {
+  const user = await getUserByEmail(email, { select: { esignature: true } });
+  if (!user) throw new Error("User not found");
+
+  return user.esignature;
 };

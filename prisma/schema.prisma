@@ -7,6 +7,11 @@ generator client {
     provider = "prisma-client-js"
 }
 
+enum USERROLE {
+    MANAGER
+    USER
+}
+
 model User {
     id            String    @id @default(cuid())
     name          String?
@@ -17,6 +22,8 @@ model User {
     sessions      Session[]
     images        String[]
     esignature    String?
+    role          USERROLE  @default(USER)
+    pdfs          String[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

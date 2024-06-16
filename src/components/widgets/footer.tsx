@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const Footer = () => {
   const navigationItems = [
@@ -60,7 +61,8 @@ export const Footer = () => {
           <div className="flex gap-8 flex-col items-start">
             <div className="flex gap-2 flex-col">
               <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular text-left">
-                TWBlocks™
+                SECURIS™
+                <Image src="/logo.svg" alt="logo" width={150} height={150} />
               </h2>
               <p className="text-lg max-w-lg leading-relaxed tracking-tight text-left">
                 Managing a small business today is already tough.

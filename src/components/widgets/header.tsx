@@ -13,7 +13,7 @@ import { Menu, MoveRight, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { Google } from "@/components/icons/Google";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 
 const navigationItems = [
@@ -75,7 +75,15 @@ export const Header = () => {
     <header className="w-full z-40 fixed top-0 left-0 bg-background backdrop-blur-md">
       <div className="container relative mx-auto min-h-20 flex gap-4 flex-row lg:grid lg:grid-cols-3 items-center">
         <div className="flex lg:justify-start pl-10">
-          <p className="font-bold text-xl"><Image src="/securis_logo.png" alt="logo" width={100} height={100}/></p>
+          <p className="font-bold text-xl">
+            <Image
+              src="/logo.svg"
+              alt="logo"
+              className="text-white"
+              width={150}
+              height={150}
+            />
+          </p>
         </div>
         <div className="justify-center items-center gap-4 lg:flex hidden flex-row">
           <NavigationMenu className="flex justify-start items-start">
@@ -130,16 +138,14 @@ export const Header = () => {
         <div className="flex justify-end w-full gap-4">
           {session ? (
             <Button asChild className="flex gap-2" variant={"secondary"}>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href={`/${session.user.role.toLowerCase()}`}>
+                Dashboard
+              </Link>
             </Button>
           ) : (
             <Button
               className="flex gap-2"
-              onClick={() =>
-                signIn("google", {
-                  callbackUrl: "/dashboard",
-                })
-              }
+              onClick={() => signIn("google")}
               variant={"secondary"}
             >
               <Google className="w-5 h-5" />
