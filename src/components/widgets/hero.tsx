@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Lottie } from "@/components/common/Lottie";
 import { holligate } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
@@ -25,12 +24,7 @@ export function Hero() {
                   Fraud Detection and Enhance Transaction Security.
                 </p>
               </div>
-              <div className="mt-8 gap-3 flex justify-center">
-                <Button size={"lg"}>Get started</Button>
-                <Button size={"lg"} variant={"outline"}>
-                  Learn more
-                </Button>
-              </div>
+
             </div>
             <div className="w-[480px]">
               <Lottie

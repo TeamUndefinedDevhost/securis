@@ -23,48 +23,9 @@ const navigationItems = [
     description: "",
   },
   {
-    title: "Product",
-    description: "Managing a small business today is already tough.",
-    items: [
-      {
-        title: "Reports",
-        href: "/reports",
-      },
-      {
-        title: "Statistics",
-        href: "/statistics",
-      },
-      {
-        title: "Dashboards",
-        href: "/dashboards",
-      },
-      {
-        title: "Recordings",
-        href: "/recordings",
-      },
-    ],
-  },
-  {
-    title: "Company",
-    description: "Managing a small business today is already tough.",
-    items: [
-      {
-        title: "About us",
-        href: "/about",
-      },
-      {
-        title: "Fundraising",
-        href: "/fundraising",
-      },
-      {
-        title: "Investors",
-        href: "/investors",
-      },
-      {
-        title: "Contact us",
-        href: "/contact",
-      },
-    ],
+    title: "Features",
+    description: "",
+    href: "#features",
   },
 ];
 
@@ -74,15 +35,9 @@ export const Header = () => {
   return (
     <header className="w-full z-40 fixed top-0 left-0 bg-background backdrop-blur-md">
       <div className="container relative mx-auto min-h-20 flex gap-4 flex-row lg:grid lg:grid-cols-3 items-center">
-        <div className="flex lg:justify-start pl-10">
+        <div className="flex lg:justify-start">
           <p className="font-bold text-xl">
-            <Image
-              src="/logo.svg"
-              alt="logo"
-              className="text-white"
-              width={150}
-              height={150}
-            />
+            <Image src="/logo.svg" alt="logo" width={150} height={150} />
           </p>
         </div>
         <div className="justify-center items-center gap-4 lg:flex hidden flex-row">
@@ -110,21 +65,6 @@ export const Header = () => {
                                 {item.description}
                               </p>
                             </div>
-                            <Button size="sm" className="mt-10">
-                              Book a call today
-                            </Button>
-                          </div>
-                          <div className="flex flex-col text-sm h-full justify-end">
-                            {item.items?.map((subItem) => (
-                              <NavigationMenuLink
-                                href={subItem.href}
-                                key={subItem.title}
-                                className="flex flex-row justify-between items-center hover:bg-muted py-2 px-4 rounded"
-                              >
-                                <span>{subItem.title}</span>
-                                <MoveRight className="w-4 h-4 text-muted-foreground" />
-                              </NavigationMenuLink>
-                            ))}
                           </div>
                         </div>
                       </NavigationMenuContent>
@@ -173,19 +113,6 @@ export const Header = () => {
                     ) : (
                       <p className="text-lg">{item.title}</p>
                     )}
-                    {item.items &&
-                      item.items.map((subItem) => (
-                        <Link
-                          key={subItem.title}
-                          href={subItem.href}
-                          className="flex justify-between items-center"
-                        >
-                          <span className="text-muted-foreground">
-                            {subItem.title}
-                          </span>
-                          <MoveRight className="w-4 h-4 stroke-1" />
-                        </Link>
-                      ))}
                   </div>
                 </div>
               ))}
