@@ -1,7 +1,17 @@
 "use client";
 
 import DashboardLayout from "../_components/DashboardLayout";
-import { PaperclipIcon, FileSignature, Coins, Home, Package, Save, Search, Image as Im, HomeIcon } from "lucide-react";
+import {
+  PaperclipIcon,
+  FileSignature,
+  Coins,
+  Home,
+  Package,
+  Save,
+  Search,
+  Image as Im,
+  HomeIcon,
+} from "lucide-react";
 import { USERROLE } from "@prisma/client";
 import Image from "next/image";
 import { Building } from "lucide-react";
@@ -34,7 +44,6 @@ export default function UserLayout({
   const { data: session } = useSession({
     required: true,
   });
-
 
   if (session?.user.role !== USERROLE.USER) {
     return (
